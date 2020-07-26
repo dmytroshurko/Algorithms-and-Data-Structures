@@ -1,0 +1,3 @@
+add_library(dynamic_array dynamic_array.cpp)
+add_executable(test_dynamic_array test_dynamic_array.cpp)
+target_link_libraries(test_dynamic_array dynamic_array gtest)
