@@ -1,9 +1,7 @@
 #ifndef DATA_STRUCTURES_DYNAMIC_ARRAY_DYNAMIC_ARRAY_H_
 #define DATA_STRUCTURES_DYNAMIC_ARRAY_DYNAMIC_ARRAY_H_
 
-#include <algorithm>
 #include <initializer_list>
-#include <stdexcept>
 
 namespace ds {
 

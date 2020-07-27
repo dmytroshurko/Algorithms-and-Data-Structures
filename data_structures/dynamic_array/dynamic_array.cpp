@@ -1,5 +1,7 @@
 #include "dynamic_array.hpp"
 
+#include <algorithm>
+#include <stdexcept>
 #include <string>
 
 namespace ds {
