@@ -5,10 +5,12 @@
 #include <string>
 
 namespace ds {
-  template <class T> DynamicArray<T>::DynamicArray()
+  template <class T>
+  DynamicArray<T>::DynamicArray()
       : capacity_(kMinCapacity), size_(0), array_(new T[kMinCapacity]) {}
 
-  template <class T> DynamicArray<T>::DynamicArray(int capacity) {
+  template <class T>
+  DynamicArray<T>::DynamicArray(int capacity) {
     if (capacity < 0) {
       throw std::length_error("Capacity can't be negative.");
     }
@@ -17,39 +19,90 @@ namespace ds {
     array_ = new T[capacity];
   }
 
-  template <class T> DynamicArray<T>::DynamicArray(std::initializer_list<T> init_list)
+  template <class T>
+  DynamicArray<T>::DynamicArray(std::initializer_list<T> init_list)
       : capacity_(init_list.size() * kGrowthFactor),
         size_(init_list.size()),
         array_(new T[init_list.size()]) {
     std::copy(init_list.begin(), init_list.end(), array_);
   }
 
-  template <class T> DynamicArray<T>::~DynamicArray() { delete[] array_; }
+  template <class T>
+  DynamicArray<T>::DynamicArray(const DynamicArray<T>& other)
+      : capacity_(other.capacity_), size_(other.size_), array_(new T[other.capacity_]) {
+    for (int i = 0; i < size_; ++i) {
+      array_[i] = other.array_[i];
+    }
+  }
 
-  template <class T> int DynamicArray<T>::GetSize() const { return size_; }
+  template <class T>
+  DynamicArray<T>::~DynamicArray() {
+    delete[] array_;
+  }
 
-  template <class T> bool DynamicArray<T>::IsEmpty() const { return size_ == 0; }
+  template <class T>
+  DynamicArray<T>& DynamicArray<T>::operator=(const DynamicArray<T>& other) {
+    T* new_array = new T[other.capacity_];
+    for (int i = 0; i < other.size_; ++i) {
+      new_array[i] = other.array_[i];
+    }
+    delete[] array_;
+    array_ = new_array;
+    size_ = other.size_;
+    capacity_ = other.capacity_;
+    return *this;
+  }
 
-  template <class T> T DynamicArray<T>::Get(int index) const {
+  template <class T>
+  T& DynamicArray<T>::operator[](int index) {
     if (index < 0 || index >= size_) {
       throw std::out_of_range("Index out of bounds.");
     }
     return array_[index];
   }
 
-  template <class T> void DynamicArray<T>::Set(int index, T value) {
+  template <class T>
+  const T& DynamicArray<T>::operator[](int index) const {
+    if (index < 0 || index >= size_) {
+      throw std::out_of_range("Index out of bounds.");
+    }
+    return array_[index];
+  }
+
+  template <class T>
+  int DynamicArray<T>::GetSize() const {
+    return size_;
+  }
+
+  template <class T>
+  bool DynamicArray<T>::IsEmpty() const {
+    return size_ == 0;
+  }
+
+  template <class T>
+  T DynamicArray<T>::Get(int index) const {
+    if (index < 0 || index >= size_) {
+      throw std::out_of_range("Index out of bounds.");
+    }
+    return array_[index];
+  }
+
+  template <class T>
+  void DynamicArray<T>::Set(int index, T value) {
     if (index < 0 || index >= size_) {
       throw std::out_of_range("Index out of bounds.");
     }
     array_[index] = value;
   }
 
-  template <class T> void DynamicArray<T>::Append(T value) {
+  template <class T>
+  void DynamicArray<T>::Append(T value) {
     ResizeArray(size_ + 1);
     array_[size_++] = value;
   }
 
-  template <class T> void DynamicArray<T>::InsertAt(int index, T value) {
+  template <class T>
+  void DynamicArray<T>::InsertAt(int index, T value) {
     if (index < 0 || index >= size_) {
       throw std::out_of_range("Index out of bounds.");
     }
@@ -61,7 +114,8 @@ namespace ds {
     ++size_;
   }
 
-  template <class T> void DynamicArray<T>::RemoveAt(int index) {
+  template <class T>
+  void DynamicArray<T>::RemoveAt(int index) {
     if (index < 0 || index >= size_) {
       throw std::out_of_range("Index out of bounds.");
     }
@@ -72,7 +126,8 @@ namespace ds {
     --size_;
   }
 
-  template <class T> void DynamicArray<T>::ResizeArray(int new_size) {
+  template <class T>
+  void DynamicArray<T>::ResizeArray(int new_size) {
     if (size_ < new_size) {
       if (size_ == capacity_) {
         IncreaseCapacity();
@@ -84,7 +139,8 @@ namespace ds {
     }
   }
 
-  template <class T> void DynamicArray<T>::IncreaseCapacity() {
+  template <class T>
+  void DynamicArray<T>::IncreaseCapacity() {
     int new_capacity = capacity_ * kGrowthFactor;
     capacity_ = new_capacity;
     T* new_array = new T[new_capacity];
@@ -95,7 +151,8 @@ namespace ds {
     array_ = new_array;
   }
 
-  template <class T> void DynamicArray<T>::DecreaseCapacity() {
+  template <class T>
+  void DynamicArray<T>::DecreaseCapacity() {
     int new_capacity = capacity_ / kShrinkFactor;
     if (new_capacity < kMinCapacity) {
       new_capacity = kMinCapacity;

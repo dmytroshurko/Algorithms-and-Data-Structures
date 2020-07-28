@@ -9,12 +9,19 @@ namespace ds {
   const int kGrowthFactor = 2;
   const int kShrinkFactor = 4;
 
-  template <class T> class DynamicArray {
+  template <class T>
+  class DynamicArray {
   public:
     DynamicArray();
     DynamicArray(int capacity);
     DynamicArray(std::initializer_list<T> init_list);
+    DynamicArray(const DynamicArray& other);
     ~DynamicArray();
+
+    DynamicArray& operator=(const DynamicArray<T>& other);
+
+    T& operator[](int index);
+    const T& operator[](int index) const;
 
     // Returns the number of elements in the dynamic array.
     int GetSize() const;
