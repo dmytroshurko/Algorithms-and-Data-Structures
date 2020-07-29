@@ -1,0 +1,3 @@
+add_library(doubly_linked_list doubly_linked_list.cpp node.hpp)
+add_executable(test_doubly_linked_list test_doubly_linked_list.cpp)
+target_link_libraries(test_doubly_linked_list doubly_linked_list gtest)
