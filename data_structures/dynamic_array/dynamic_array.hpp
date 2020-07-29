@@ -26,6 +26,9 @@ namespace ds {
     // Returns the number of elements in the dynamic array.
     int GetSize() const;
 
+    // Returns the capacity of the dynamic array.
+    int GetCapacity() const;
+
     // Returns true if the dynamic array is empty.
     bool IsEmpty() const;
 

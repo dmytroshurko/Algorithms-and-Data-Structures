@@ -21,9 +21,7 @@ namespace ds {
 
   template <class T>
   DynamicArray<T>::DynamicArray(std::initializer_list<T> init_list)
-      : capacity_(init_list.size() * kGrowthFactor),
-        size_(init_list.size()),
-        array_(new T[init_list.size()]) {
+      : capacity_(init_list.size()), size_(init_list.size()), array_(new T[init_list.size()]) {
     std::copy(init_list.begin(), init_list.end(), array_);
   }
 
@@ -72,6 +70,11 @@ namespace ds {
   template <class T>
   int DynamicArray<T>::GetSize() const {
     return size_;
+  }
+
+  template <class T>
+  int DynamicArray<T>::GetCapacity() const {
+    return capacity_;
   }
 
   template <class T>
