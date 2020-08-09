@@ -34,6 +34,14 @@ namespace ds {
   }
 
   template <class T>
+  DynamicArray<T>::DynamicArray(DynamicArray<T>&& other)
+      : capacity_(other.capacity_), size_(other.size_), array_(other.array_) {
+    other.capacity_ = 0;
+    other.size_ = 0;
+    other.array_ = nullptr;
+  }
+
+  template <class T>
   DynamicArray<T>::~DynamicArray() {
     delete[] array_;
   }

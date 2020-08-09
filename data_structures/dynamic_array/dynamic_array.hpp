@@ -16,6 +16,7 @@ namespace ds {
     DynamicArray(int capacity);
     DynamicArray(std::initializer_list<T> init_list);
     DynamicArray(const DynamicArray& other);
+    DynamicArray(DynamicArray&& other);
     ~DynamicArray();
 
     DynamicArray& operator=(const DynamicArray<T>& other);
