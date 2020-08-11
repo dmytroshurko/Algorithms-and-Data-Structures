@@ -7,7 +7,7 @@ TEST(QueueTest, EmptyQueue) {
   test_passed = queue.IsEmpty();
   queue.Enqueue(1000);
   test_passed = test_passed && !queue.IsEmpty();
-  EXPECT_TRUE(test_passed);
+  ASSERT_TRUE(test_passed);
 }
 
 TEST(QueueTest, QueueEnqueueDequeue) {
@@ -19,7 +19,7 @@ TEST(QueueTest, QueueEnqueueDequeue) {
   test_passed = queue.Dequeue() == 1;
   test_passed &= queue.Dequeue() == 1000;
   test_passed &= queue.Dequeue() == 100;
-  EXPECT_TRUE(test_passed);
+  ASSERT_TRUE(test_passed);
 }
 
 TEST(QueueTest, OneHundredElements) {
@@ -35,7 +35,7 @@ TEST(QueueTest, OneHundredElements) {
     test_passed &= queue.Dequeue() == i;
   }
   test_passed &= queue.IsEmpty();
-  EXPECT_TRUE(test_passed);
+  ASSERT_TRUE(test_passed);
 }
 
 int main(int argc, char **argv) {

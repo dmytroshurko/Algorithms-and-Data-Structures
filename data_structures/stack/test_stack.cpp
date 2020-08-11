@@ -7,7 +7,7 @@ TEST(StackTest, EmptyStack) {
   test_passed = stack.IsEmpty();
   stack.Push(100);
   test_passed = test_passed && !stack.IsEmpty();
-  EXPECT_TRUE(test_passed);
+  ASSERT_TRUE(test_passed);
 }
 
 TEST(StackTest, StackPushPop) {
@@ -19,7 +19,7 @@ TEST(StackTest, StackPushPop) {
   test_passed = stack.Pop() == 40;
   test_passed &= stack.Pop() == 2;
   test_passed &= stack.Pop() == -1;
-  EXPECT_TRUE(test_passed);
+  ASSERT_TRUE(test_passed);
 }
 
 TEST(StackTest, OneHundredElements) {
@@ -35,7 +35,7 @@ TEST(StackTest, OneHundredElements) {
     test_passed &= stack.Pop() == i;
   }
   test_passed &= stack.IsEmpty();
-  EXPECT_TRUE(test_passed);
+  ASSERT_TRUE(test_passed);
 }
 
 int main(int argc, char **argv) {
