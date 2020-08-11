@@ -1,0 +1,3 @@
+add_library(disjoint_set disjoint_set.cpp)
+add_executable(test_disjoint_set test_disjoint_set.cpp)
+target_link_libraries(test_disjoint_set disjoint_set gtest)
