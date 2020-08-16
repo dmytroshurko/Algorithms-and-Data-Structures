@@ -1,0 +1,3 @@
+add_library(priority_queue priority_queue.cpp)
+add_executable(test_priority_queue test_priority_queue.cpp)
+target_link_libraries(test_priority_queue priority_queue gtest)
