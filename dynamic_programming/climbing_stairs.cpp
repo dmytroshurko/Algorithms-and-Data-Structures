@@ -7,8 +7,8 @@
 
 // Time Complexity: O(n * k)
 // Space Complexity: O(k)
-long ClimbStairsKSteps(int n, int k) {
-  std::vector<long> dp(k);
+int ClimbStairsKSteps(int n, int k) {
+  std::vector<int> dp(k);
   dp[0] = 1;
   for (int i = 1; i <= n; ++i) {
     for (int j = 1; j < k; ++j) {
@@ -24,7 +24,7 @@ long ClimbStairsKSteps(int n, int k) {
 int main() {
   int n, k;
   std::cin >> n >> k;
-  long result = ClimbStairsKSteps(n, k);
+  int result = ClimbStairsKSteps(n, k);
   std::cout << result << std::endl;
   return 0;
 }
