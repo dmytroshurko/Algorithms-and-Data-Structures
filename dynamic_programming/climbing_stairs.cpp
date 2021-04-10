@@ -1,6 +1,7 @@
 // You are climbing a stair case. It takes n steps to reach to the top.
 //
-// Each time you can climb 1...k steps. In how many distinct ways can you climb to the top?
+// Each time you can climb 1...k steps. In how many distinct ways can you climb
+// to the top?
 
 #include <iostream>
 #include <vector>
@@ -15,6 +16,7 @@ int ClimbStairsKSteps(int n, int k) {
       if (i - j < 0) {
         continue;
       }
+      // rewrite the number of different ways to reach each stair case
       dp[i % k] += dp[(i - j) % k];
     }
   }
