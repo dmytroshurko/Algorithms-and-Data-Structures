@@ -1,5 +1,4 @@
-// You are climbing a stair case. It takes n steps to reach to the top.
-//
+// You are climbing a staircase. It takes n steps to reach to the top.
 // Each time you can climb 1...k steps. In how many distinct ways can you climb
 // to the top?
 
@@ -26,6 +25,7 @@ int ClimbStairsKSteps(int n, int k) {
 int main() {
   int n, k;
   std::cin >> n >> k;
+
   int result = ClimbStairsKSteps(n, k);
   std::cout << result << std::endl;
   return 0;

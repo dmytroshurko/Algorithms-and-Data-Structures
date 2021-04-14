@@ -1,4 +1,4 @@
-// You are climbing a stair case. It takes n steps to reach to the top.
+// You are climbing a staircase. It takes n steps to reach to the top.
 // Each time you can climb 1...k steps. You are not allowed to step on the red
 // stairs. In how many distinct ways can you climb to the top?
 
@@ -41,6 +41,5 @@ int main() {
 
   int result = ClimbStairsKStepsSkipRed(n, k, red_stairs);
   std::cout << result << std::endl;
-
   return 0;
 }
